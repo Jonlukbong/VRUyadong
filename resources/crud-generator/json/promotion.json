@@ -1,0 +1,13 @@
+{
+    "fields": [
+        {
+            "name": "promotion",
+            "type": "text"
+        },
+        {
+            "name": "picture",
+            "type": "file"
+        }
+        
+    ]
+}

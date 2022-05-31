@@ -1,0 +1,17 @@
+{
+    "fields": [
+        {
+            "name": "nameproduct",
+            "type": "string"
+        },
+        {
+            "name": "amount",
+            "type": "integer"
+        },
+        {
+            "name": "price",
+            "type": "integer"
+        }
+        
+    ]
+}
