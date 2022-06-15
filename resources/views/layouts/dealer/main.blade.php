@@ -3,7 +3,7 @@
  
 <head>
  
-  @include('layouts.volunteer.head')
+  @include('layouts.dealer.head')
  
 </head>
 
@@ -12,7 +12,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
  
-    @include('layouts.volunteer.sidebar')
+    @include('layouts.dealer.sidebar')
  
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -20,7 +20,7 @@
       <!-- Main Content -->
       <div id="content">
  
-          @include('layouts.volunteer.navbar')
+          @include('layouts.dealer.navbar')
  
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -33,7 +33,7 @@
       </div>
       <!-- End of Main Content -->
  
-      @include('layouts.volunteer.footer')
+      @include('layouts.dealer.footer')
  
     </div>
     <!-- End of Content Wrapper -->
@@ -42,7 +42,7 @@
   <!-- End of Page Wrapper -->
  
    
-@include('layouts.volunteer.js')
+@include('layouts.dealer.js')
     
 </body>
  

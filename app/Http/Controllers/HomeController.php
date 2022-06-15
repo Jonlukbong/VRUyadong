@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,6 +25,10 @@ class HomeController extends Controller
     {
         if (auth()->user()->role == 'admin') {
             return redirect('product');
+        } else if (auth()->user()->role == 'dealer') {
+            return redirect('dealer');
+        } else if (auth()->user()->role == 'customer') {
+            return redirect('customer');
         } else {
             return view('home');
         }

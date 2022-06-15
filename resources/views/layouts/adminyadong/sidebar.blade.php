@@ -21,12 +21,12 @@
       <!-- Nav Item - Pages Collapse Menu -->
            
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/product') }}">
+                <a class="nav-link" href="{{ url('/adminyadong') }}">
                     <i class="fas fa-circle"></i>
                     <span>หน้าแรก</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/admin_volunteer') }}">
+                <a class="nav-link" href="{{ url('/product') }}">
                     <i class="fas fa-circle"></i>
                     <span>จัดการข้อมูลสินค้า</span></a>
             </li>
@@ -36,12 +36,12 @@
                     <span>จัดการข้อมูลโปรโมชั่น</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/admin_medic') }}">
+                <a class="nav-link" href="{{ url('/admin_user') }}">
                     <i class="fas fa-circle"></i>
                     <span>จัดการข้อมูลผู้ใช้งาน</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/admin_medic') }}">
+                <a class="nav-link" href="{{ url('/admin_customer') }}">
                     <i class="fas fa-circle"></i>
                     <span>จัดการข้อมูลตัวแทนจำหน่าย</span></a>
             </li>

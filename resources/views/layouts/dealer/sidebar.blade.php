@@ -7,7 +7,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-leaf"></i>
     </div>
-    <div class="sidebar-brand-text mx-3" >ความเครียด</div>
+    <div class="sidebar-brand-text mx-3" >Vyadong</div>
   </a>
 
   <!-- Divider -->
@@ -20,19 +20,24 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-            <a class="nav-link" href="{{ url('/volunteer_per') }}">
+            <a class="nav-link" href="{{ url('/dealer') }}">
                 <i class="fas fa-circle"></i>
                 <span>หน้าหลัก</span></a>
         </li>
   <li class="nav-item">
-            <a class="nav-link" href="{{ url('/volunteer_question') }}">
+            <a class="nav-link" href="{{ url('/branch') }}">
                 <i class="fas fa-circle"></i>
-                <span>แบบสอบถาม</span></a>
+                <span>ข้อมูลร้าน</span></a>
         </li>
   <li class="nav-item">
-            <a class="nav-link" href="{{ url('/volunteer_con') }}">
+            <a class="nav-link" href="{{ url('/dealer_product') }}">
                 <i class="fas fa-circle"></i>
-                <span>ผลการรักษา</span></a>
+                <span>ข้อมูลสินค้า</span></a>
+  </li>
+  <li class="nav-item">
+            <a class="nav-link" href="{{ url('/dealer_contact') }}">
+                <i class="fas fa-circle"></i>
+                <span>ติดต่อแอดมิน</span></a>
   </li>
      
 </ul>

@@ -1,4 +1,4 @@
-@extends('layouts.adminyadong.main')
+@extends('layouts.customer.main')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! as admin
+                    จัดการสินค้า
                 </div>
             </div>
         </div>

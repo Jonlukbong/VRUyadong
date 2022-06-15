@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! as admin
+                    หน้าหลัก
                 </div>
             </div>
         </div>

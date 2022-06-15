@@ -37,12 +37,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    protected function redirectTo()
-    {
-        if (auth()->user()->isAdmin()) {
-            return '/product';
-        } else {
-            return '/home';
-        }
-    }
+    // protected function redirectTo()
+    // {
+    //     if (auth()->user()->isAdmin()) {
+    //         return '/product';
+    //     } else if (auth()->user()->isDealer()) {
+    //         return '/dealer';
+    //     } else {
+    //         return '/home';
+    //     }
+    // }
 }

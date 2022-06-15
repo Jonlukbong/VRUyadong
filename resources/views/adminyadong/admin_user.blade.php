@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! as admin
+                    จัดการข้อมูลผู้ใช้งาน
                 </div>
             </div>
         </div>

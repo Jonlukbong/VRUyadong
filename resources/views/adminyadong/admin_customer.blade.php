@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! as admin
+                    จัดการข้อมูลตัวแทนจำหน่าย
                 </div>
             </div>
         </div>
