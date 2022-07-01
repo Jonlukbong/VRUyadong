@@ -7,7 +7,9 @@
 
         <div class="col-md">
             <div class="card">
-                <div class="card-header">Promotion</div>
+                <div class="card-header py-3">
+                    <h6 class="m-1 font-weight-bold text-primary">Promotion</h6>
+                </div>
                 <div class="card-body">
                     <a href="{{ url('/promotion/create') }}" class="btn btn-success btn-sm" title="Add New Promotion">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
