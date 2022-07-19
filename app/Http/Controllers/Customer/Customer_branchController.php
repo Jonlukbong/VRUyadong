@@ -42,7 +42,7 @@ class Customer_branchController extends Controller
 
     public function edit($id)
     {
-        $branch = customer_branch::findOrFail($id);
+        $branch = User::findOrFail($id);
 
         return view('customer.customer_branch2', compact('branch'));
     }
@@ -51,7 +51,7 @@ class Customer_branchController extends Controller
     {
         $requestData = $request->all();
         
-        $branch = customer_branch::findOrFail($id);
+        $branch = User::findOrFail($id);
         $branch->update($requestData);
 
         return redirect('customer_branch')->with('flash_message', 'updated!');
