@@ -38,8 +38,17 @@ Route::resource('admin_customer', 'Adminyadong\Admin_customerController');
 
 //Route Customer --------------------------------------------------------------------
 Route::get('/customer', 'Customer\CustomerController@index');
-Route::resource('customer_branch', 'Customer\Customer_branchController');
+
+// Route::resource('customer_branch', 'Customer\Customer_branchController');
+Route::get('customer_branch', 'Customer\Customer_branchController@index');
+Route::get('customer_branch/create', 'Customer\Customer_branchController@create');
+Route::get('customer_branch', 'Customer\Customer_branchController@store');
+Route::get('customer_branch/{branch->id}/edit', 'Customer\Customer_branchController@edit');
+Route::patch('customer_branch/{branch->id}', 'Customer\Customer_branchController@update');
+
+
 Route::resource('customer_product', 'Customer\Customer_productController');
+
 Route::resource('customer_contact', 'Customer\Customer_contactController');
 
 
