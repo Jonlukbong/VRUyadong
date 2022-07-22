@@ -16,7 +16,6 @@
                                 <th>#</th>
                                 <th>Promotion</th>
                                 <th>Picture</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
