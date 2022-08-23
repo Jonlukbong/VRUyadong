@@ -40,6 +40,7 @@ Route::resource('admin_customer', 'Adminyadong\Admin_customerController');
 Route::get('/customer', 'Customer\CustomerController@index');
 
 Route::resource('customer_branch', 'Customer\Customer_branchController');
+Route::resource('Cus_stock', 'Customer\Cus_stockController');
 // Route::get('customer_branch', 'Customer\Customer_branchController@index');
 // Route::get('customer_branch/create', 'Customer\Customer_branchController@create');
 // Route::get('customer_branch', 'Customer\Customer_branchController@store');
