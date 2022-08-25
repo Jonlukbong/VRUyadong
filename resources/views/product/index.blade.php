@@ -33,9 +33,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nameproduct</th>
-                                    <th>Amount</th>
-                                    <th>Price</th>
+                                    <th>ชื่อสินค้า</th>
+                                    <th>จำนวน(ลิตร)</th>
+                                    <th>ราคา(ต่อลิตร)</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

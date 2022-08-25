@@ -24,7 +24,7 @@
                         <form method="POST" action="{{ url('/Cus_stock') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('product.form', ['formMode' => 'create'])
+                            @include ('customer.cus_stock.form', ['formMode' => 'create'])
 
                         </form>
 

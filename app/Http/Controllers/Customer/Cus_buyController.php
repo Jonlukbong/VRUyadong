@@ -56,7 +56,7 @@ class Cus_buyController extends Controller
         
         cusbuy::create($requestData);
 
-        return redirect('cus_buy')->with('flash_message', 'Product added!');
+        return redirect('Cus_buy')->with('flash_message', 'Product added!');
     }
 
     /**
