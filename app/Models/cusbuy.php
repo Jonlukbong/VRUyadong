@@ -25,7 +25,7 @@ class cusbuy extends Model
      *
      * @var array
      */
-    protected $fillable = ['nameproduct', 'amount', 'price', 'picture'];
+    protected $fillable = ['nameproduct', 'amount', 'price', 'picture', 'idproduct', 'user_id'];
 
     
 }

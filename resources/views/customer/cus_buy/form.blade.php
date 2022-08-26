@@ -5,15 +5,15 @@
     </select>
 </div>
 <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
-    <label for="amount" class="control-label">{{ 'จำนวน' }}</label>
+    <label for="amount" class="control-label">{{ 'จำนวน (100บาทต่อลิตร)' }}</label>
     <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($cusbuy->amount) ? $cusbuy->amount : ''}}">
     {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
+<!-- <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
     <label for="price" class="control-label">{{ 'ราคา' }}</label>
     <input class="form-control" name="price" type="number" id="price" value="{{ isset($cusbuy->price) ? $cusbuy->price : ''}}">
     {!! $errors->first('price', '<p class="help-block">:message</p>') !!}
-</div>
+</div> -->
 
 
 <div class="form-group">
@@ -23,9 +23,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         console.log("START");
+        nameproduct();
     });
 
-    document.getElementById('nameproduct').addEventListener("change", function(e) {
+    function nameproduct(){
                 //PARAMETERS
                 fetch("{{ url('/') }}/api/nameproduct")
                     .then(response => response.json())
@@ -37,7 +38,7 @@
                         for (let item of result) {
                             let option = document.createElement("option");
                             option.text = item.nameproduct;
-                            option.value = item.id;
+                            option.value = item.nameproduct;
                             nameproduct.appendChild(option);
                         }
                     });

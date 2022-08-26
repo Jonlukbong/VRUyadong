@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\cusbuy;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\Environment\Console;
 
 class Cus_buyController extends Controller
 {
@@ -19,6 +22,7 @@ class Cus_buyController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $user_id = Auth::id();
 
         if (!empty($keyword)) {
             $cusbuy = cusbuy::where('nameproduct', 'LIKE', "%$keyword%")
@@ -26,7 +30,11 @@ class Cus_buyController extends Controller
                 ->orWhere('price', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $cusbuy = cusbuy::latest()->paginate($perPage);
+            $cusbuy = Product::leftJoin('cusbuy','products.id','=','cusbuy.user_id')
+            ->select( 'products.*','cusbuy.*')
+            ->where('cusbuy.user_id','=',$user_id)
+            ->orderBy('created_at','desc')->paginate($perPage);
+            
         }
 
         return view('customer.cus_buy.index', compact('cusbuy'));
@@ -53,6 +61,18 @@ class Cus_buyController extends Controller
     {
         
         $requestData = $request->all();
+        $user_id = Auth::id();
+        $requestData["user_id"] = $user_id;
+
+        if($requestData["nameproduct"] = 'โด่ไม่รู้ล้ม'){
+             $requestData["idproduct"] = '1';
+        }else if($requestData["nameproduct"] = 'นารีรำพึง'){
+             $requestData["idproduct"] = '5';
+        }else if($requestData["nameproduct"] = 'ม้ากระทืบโรง'){
+             $requestData["idproduct"] = '6';
+        }else if($requestData["nameproduct"] = 'กำลังเสือโคร่ง'){
+             $requestData["idproduct"] = '7';
+        }
         
         cusbuy::create($requestData);
 
