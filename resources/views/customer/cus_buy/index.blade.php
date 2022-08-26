@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nameproduct }}</td>
-                                    <!-- <td>{{ $item->amount }}</td> -->
+                                    <td>{{ $item->amount }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>
                                         <a href="{{ url('/Cus_buy/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

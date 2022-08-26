@@ -30,11 +30,18 @@ class Cus_buyController extends Controller
                 ->orWhere('price', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $cusbuy = Product::leftJoin('cusbuy','products.id','=','cusbuy.user_id')
-            ->select( 'products.*','cusbuy.*')
-            ->where('cusbuy.user_id','=',$user_id)
-            ->orderBy('created_at','desc')->paginate($perPage);
+            // $cusbuy = Product::leftJoin('cusbuy','products.id','=','cusbuy.user_id')
+            // ->select('products.price','cusbuy.nameproduct','cusbuy.amount')
+            // // ->where('cusbuy.user_id','=',$user_id)
+            // ->orderBy('cusbuy.created_at','desc')->paginate($perPage);
+
+            // $cusbuy = cusbuy::leftJoin('products','cusbuy.user_id','=','products.id')
+            // ->select('products.price','cusbuy.nameproduct','cusbuy.amount')
+            // ->where('cusbuy.user_id','=',$user_id)
+            // ->orderBy('cusbuy.created_at','desc')->paginate($perPage);
             
+            $cusbuy = cusbuy::where('user_id','=',$user_id)
+            ->orderBy('created_at','desc')->paginate($perPage);
         }
 
         return view('customer.cus_buy.index', compact('cusbuy'));
@@ -61,19 +68,13 @@ class Cus_buyController extends Controller
     {
         
         $requestData = $request->all();
+
         $user_id = Auth::id();
         $requestData["user_id"] = $user_id;
+        $product = Product::where('id', $requestData["nameproduct"])->first();
+        $requestData["nameproduct"] = $product->nameproduct;
+        $requestData["price"] = $requestData["amount"]*$product->price;
 
-        if($requestData["nameproduct"] = 'โด่ไม่รู้ล้ม'){
-             $requestData["idproduct"] = '1';
-        }else if($requestData["nameproduct"] = 'นารีรำพึง'){
-             $requestData["idproduct"] = '5';
-        }else if($requestData["nameproduct"] = 'ม้ากระทืบโรง'){
-             $requestData["idproduct"] = '6';
-        }else if($requestData["nameproduct"] = 'กำลังเสือโคร่ง'){
-             $requestData["idproduct"] = '7';
-        }
-        
         cusbuy::create($requestData);
 
         return redirect('Cus_buy')->with('flash_message', 'Product added!');
