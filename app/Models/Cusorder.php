@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cusbuy extends Model
+class Cusorder extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'cusbuy';
+    protected $table = 'cusorders';
 
     /**
     * The database primary key value.

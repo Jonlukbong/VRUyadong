@@ -35,13 +35,17 @@ Route::resource('promotion', 'PromotionController');
 Route::resource('admin_user', 'Adminyadong\Admin_userController');
 Route::resource('admin_customer', 'Adminyadong\Admin_customerController');
 // Route::get('/login',)
-
+Route::resource('cusorder', 'CusorderController')->except(['show','edit']);
 //Route Customer --------------------------------------------------------------------
 Route::get('/customer', 'Customer\CustomerController@index');
 
 Route::resource('customer_branch', 'Customer\Customer_branchController');
 Route::resource('Cus_stock', 'Customer\Cus_stockController');
 Route::resource('Cus_buy', 'Customer\Cus_buyController');
+Route::get('/Cus_buy/{id}/drop', 'Customer\Cus_buyController@drop');
+Route::get('/cus_order/buy_all', 'Customer\Cus_buyController@buy_all');
+
+
 // Route::get('customer_branch', 'Customer\Customer_branchController@index');
 // Route::get('customer_branch/create', 'Customer\Customer_branchController@create');
 // Route::get('customer_branch', 'Customer\Customer_branchController@store');

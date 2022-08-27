@@ -7,9 +7,11 @@ use App\Http\Requests;
 
 use App\Models\cusbuy;
 use App\Models\Product;
+use App\Models\Cusorder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\DB;
 
 class Cus_buyController extends Controller
 {
@@ -20,29 +22,15 @@ class Cus_buyController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
+
         $perPage = 25;
         $user_id = Auth::id();
 
-        if (!empty($keyword)) {
-            $cusbuy = cusbuy::where('nameproduct', 'LIKE', "%$keyword%")
-                ->orWhere('amount', 'LIKE', "%$keyword%")
-                ->orWhere('price', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            // $cusbuy = Product::leftJoin('cusbuy','products.id','=','cusbuy.user_id')
-            // ->select('products.price','cusbuy.nameproduct','cusbuy.amount')
-            // // ->where('cusbuy.user_id','=',$user_id)
-            // ->orderBy('cusbuy.created_at','desc')->paginate($perPage);
+        $cusbuy = cusbuy::where('user_id', '=', $user_id)
+            ->where('status', '=', 'show')
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
 
-            // $cusbuy = cusbuy::leftJoin('products','cusbuy.user_id','=','products.id')
-            // ->select('products.price','cusbuy.nameproduct','cusbuy.amount')
-            // ->where('cusbuy.user_id','=',$user_id)
-            // ->orderBy('cusbuy.created_at','desc')->paginate($perPage);
-            
-            $cusbuy = cusbuy::where('user_id','=',$user_id)
-            ->orderBy('created_at','desc')->paginate($perPage);
-        }
 
         return view('customer.cus_buy.index', compact('cusbuy'));
     }
@@ -54,7 +42,8 @@ class Cus_buyController extends Controller
      */
     public function create()
     {
-        return view('customer.cus_buy.create');
+        $allproduct = Product::get();
+        return view('customer.cus_buy.create', compact('allproduct'));
     }
 
     /**
@@ -66,15 +55,17 @@ class Cus_buyController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
 
         $user_id = Auth::id();
         $requestData["user_id"] = $user_id;
         $product = Product::where('id', $requestData["nameproduct"])->first();
         $requestData["nameproduct"] = $product->nameproduct;
-        $requestData["price"] = $requestData["amount"]*$product->price;
+        $requestData["price"] = $requestData["amount"] * $product->price;
+        $requestData["status"] = "show";
 
+        //บันทึกลงตาราง
         cusbuy::create($requestData);
 
         return redirect('Cus_buy')->with('flash_message', 'Product added!');
@@ -104,6 +95,10 @@ class Cus_buyController extends Controller
     public function edit($id)
     {
         $cusbuy = cusbuy::findOrFail($id);
+        // echo "<pre>";
+        // print_r($cusbuy);
+        // echo "<pre>";
+        // exit();
 
         return view('customer.cus_buy.edit', compact('cusbuy'));
     }
@@ -118,11 +113,17 @@ class Cus_buyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $requestData = $request->all();
-        
+
         $product = cusbuy::findOrFail($id);
+        $allproduct = Product::where('id', $requestData["nameproduct"])->first();
+        $requestData["nameproduct"] = $allproduct->nameproduct;
+        $requestData["price"] = $requestData["amount"] * $allproduct->price;
+
         $product->update($requestData);
+
+
 
         return redirect('Cus_buy')->with('flash_message', 'Product updated!');
     }
@@ -139,5 +140,51 @@ class Cus_buyController extends Controller
         cusbuy::destroy($id);
 
         return redirect('Cus_buy')->with('flash_message', 'Product deleted!');
+    }
+
+    public function drop($id)
+    {
+        $product = cusbuy::findOrFail($id);
+        $requestData["status"] = "drop";
+
+        //บันทึกลงตาราง
+        $product->update($requestData);
+
+        return redirect('Cus_buy')->with('flash_message', 'Product drop!');
+    }
+
+    public function buy_all()
+    {
+        //มีการล็อคอินเข้าไอดี
+        $user_id = Auth::user()->id;
+
+        $cus_buyall = cusbuy::where('user_id', '=', $user_id)
+            ->where('status', '=', 'show')
+            ->get();
+
+        //เอาarrayมาวนลูบ
+        foreach ($cus_buyall as $key1) {
+
+            DB::table('cusbuy')
+                ->where('id', '=', $key1->id)
+                ->update([
+                    "status" => "order"
+                ]);
+
+            $requestData["nameproduct"] = $key1->nameproduct;
+            $requestData["amount"] = $key1->amount;
+            $requestData["price"] = $key1->price;
+            $requestData["picture"] = $key1->picture;
+            $requestData["idproduct"] = $key1->idproduct;
+            $requestData["user_id"] = $key1->user_id;
+            $requestData["status"] = "รอดำเนินการ";
+
+            //บันทึกลงตาราง
+            cusorder::create($requestData);
+        }
+
+
+
+        return redirect('/cusorder')->with('flash_message', 'Product drop!');
     }
 }

@@ -9,7 +9,7 @@ use App\Models\Product;
 
 class NameproductController extends Controller
 {
-        // ดึงข้อมูลหมดวหมู่รายรับ
+        // ดึงข้อมูลหมวดหมู่รายรับ
         public function nameProduct()
         {
             $nameproduct = Product::get();
