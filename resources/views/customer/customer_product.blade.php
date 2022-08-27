@@ -51,9 +51,9 @@
             <br>
             @if(!empty( $update_2))
             <a class="m-1 font-weight-bold text-primary">{{ $update_2 }}
-                <a href="{{ url('/Q2') }}" title="Back"><button class="btn btn-primary btn-sm" disabled></i>คลิก</button></a>
+                <a href="{{ url('//cusorder') }}" title="Back"><button class="btn btn-primary btn-sm" disabled></i>คลิก</button></a>
                 @else
-                <a href="{{ url('/Q2') }}" title="Back"><button class="btn btn-primary btn-sm"></i>คลิก</button></a>
+                <a href="{{ url('//cusorder') }}" title="Back"><button class="btn btn-primary btn-sm"></i>คลิก</button></a>
                 @endif
         </div>
         <br>

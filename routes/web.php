@@ -34,6 +34,9 @@ Route::resource('product', 'ProductController');
 Route::resource('promotion', 'PromotionController');
 Route::resource('admin_user', 'Adminyadong\Admin_userController');
 Route::resource('admin_customer', 'Adminyadong\Admin_customerController');
+
+Route::resource('adminorder', 'Adminyadong\AdminorderController');
+
 // Route::get('/login',)
 Route::resource('cusorder', 'CusorderController')->except(['show','edit']);
 //Route Customer --------------------------------------------------------------------

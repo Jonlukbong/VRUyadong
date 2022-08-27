@@ -1,4 +1,4 @@
-@extends('layouts.customer.main')
+@extends('layouts.adminyadong.main')
 
 @section('content')
 <div class="container">
@@ -34,6 +34,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>รหัสผู้ใช้</th>
                                     <th>ชื่อสินค้า</th>
                                     <th>จำนวน</th>
                                     <th>ราคา</th>
@@ -44,6 +45,7 @@
                                 @foreach($cusorder as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->user_id }}</td>
                                     <td>{{ $item->nameproduct }}</td>
                                     <td>{{ $item->amount }}</td>
                                     <td>{{ $item->price }}</td>

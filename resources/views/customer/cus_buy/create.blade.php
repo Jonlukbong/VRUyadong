@@ -28,7 +28,7 @@
                         <div class="row">
                             @foreach($allproduct as $item)
                             <div class="col-3">
-                                รูปสินค้า<br />
+                                <!-- รูปสินค้า<br /> -->
                                 <b>ชื่อสินค้า:</b> {{ $item->nameproduct }}<br />
                                 <b>จำนวน:</b> {{ $item->amount }}<br />
                                 <b>ราคา(ต่อลิตร):</b> {{ $item->price }}<br />

@@ -1,4 +1,4 @@
-@extends('layouts.customer.main')
+@extends('layouts.adminyadong.main')
 
 @section('content')
     <div class="container">
@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit Cusorder #{{ $cusorder->id }}</div>
+                    <div class="card-header">Create New Cusorder</div>
                     <div class="card-body">
                         <a href="{{ url('/cusorder') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
@@ -21,11 +21,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/cusorder/' . $cusorder->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ url('/cusorder') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('cusorder.form', ['formMode' => 'edit'])
+                            @include ('cusorder.form', ['formMode' => 'create'])
 
                         </form>
 

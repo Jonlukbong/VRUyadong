@@ -31,6 +31,11 @@
                     <span>จัดการข้อมูลสินค้า</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ url('/adminorder') }}">
+                    <i class="fas fa-circle"></i>
+                    <span>ออเดอร์สินค้า</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/promotion') }}">
                     <i class="fas fa-circle"></i>
                     <span>จัดการข้อมูลโปรโมชั่น</span></a>
