@@ -1,0 +1,16 @@
+{
+    "fields": [
+        {
+            "name": "revenue",
+            "type": "integer"
+        },
+        {
+            "name": "expenses",
+            "type": "integer"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        }
+    ]
+}
