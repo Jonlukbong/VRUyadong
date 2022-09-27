@@ -48,7 +48,10 @@ Route::resource('Cus_buy', 'Customer\Cus_buyController');
 Route::get('/Cus_buy/{id}/drop', 'Customer\Cus_buyController@drop');
 Route::get('/cus_order/buy_all', 'Customer\Cus_buyController@buy_all');
 
+Route::get('/finance2/report', 'Customer\PdfController@index');
+
 Route::resource('finance', 'Customer\FinanceController');
+Route::resource('finance2', 'Customer\Finance2Controller');
 
 // Route::get('customer_branch', 'Customer\Customer_branchController@index');
 // Route::get('customer_branch/create', 'Customer\Customer_branchController@create');
@@ -68,4 +71,3 @@ Route::get('/dealer', 'Dealer\DealerController@index');
 Route::resource('branch', 'Dealer\BranchController');
 Route::resource('dealer_product', 'Dealer\Dealer_productController');
 Route::resource('dealer_contact', 'Dealer\Dealer_contactController');
-

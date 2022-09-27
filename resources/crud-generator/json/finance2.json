@@ -1,0 +1,16 @@
+{
+    "fields": [
+        {
+            "name": "month",
+            "type": "string"
+        },
+        {
+            "name": "sum2",
+            "type": "integer"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        }
+    ]
+}
