@@ -9,8 +9,8 @@
                 <div class="card-header">
                     <a href="{{ url('/finance') }}" title="Back"><button class="btn btn-primary btn-sm"></i>รายวัน</button></a>
                     <a href="{{ url('/finance2') }}" title="Back"><button class="btn btn-primary btn-sm"></i>รายเดือน</button></a>
-                    <a href="{{ url('/finance2/report') }}" title="Back"><button class="btn btn-primary btn-sm" style="float: right;"></i>พิมพ์รายงาน</button></a>
-                    <br><br>สรุปผลกำไรรายเดือน 
+
+                    <br><br>สรุปผลกำไรรายเดือน
                 </div>
                 <div class="card-body">
                     <a href="{{ url('/finance2/create') }}" class="btn btn-success btn-sm" title="Add New Finance2">
@@ -55,6 +55,8 @@
                     <hr>
 
                     <div><a><b>สรุปผลกำไรทั้งหมด</b></a>&nbsp;&nbsp;&nbsp;<a>{{ $sumone2 }}</a>&nbsp;&nbsp;&nbsp;<b>บาท</b></div>
+
+                    <a href="{{ url('/report/' . $item->id ) }}" title="Back"><button class="btn btn-dark btn-sm" style="float: right;"></i>🖨️พิมพ์รายงาน</button></a>
 
                 </div>
             </div>

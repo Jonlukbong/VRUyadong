@@ -48,7 +48,7 @@ Route::resource('Cus_buy', 'Customer\Cus_buyController');
 Route::get('/Cus_buy/{id}/drop', 'Customer\Cus_buyController@drop');
 Route::get('/cus_order/buy_all', 'Customer\Cus_buyController@buy_all');
 
-Route::get('/finance2/report', 'Customer\PdfController@index');
+Route::get('/report/{id}', 'Customer\PdfController@report');
 
 Route::resource('finance', 'Customer\FinanceController');
 Route::resource('finance2', 'Customer\Finance2Controller');
