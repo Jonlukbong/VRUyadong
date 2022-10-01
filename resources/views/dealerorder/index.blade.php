@@ -30,12 +30,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                @php
+                                $sum = 0;
+                                @endphp
+
                                 @foreach($dealerorder as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nameproduct }}</td>
                                     <td>{{ $item->amount }}</td>
-                                    <td>{{ $item->cus_id }}</td>
+                                    <!-- <td>{{ $item->cus_id }}</td> -->
                                     <td>{{ $item->price }}</td>
                                     <td>
                                         <!-- <a href="{{ url('/dealerorder/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> -->
@@ -49,12 +54,23 @@
                                         </form> -->
                                     </td>
                                 </tr>
+
+                                <!-- รวมราคาสินค้า -->
+                                @php
+                                    $sum = $sum + (int)$item->price;
+                                @endphp
                                 @endforeach
+
+
+
                             </tbody>
 
                         </table>
+
+                        <div><a><b>รวมราคาทั้งสิ้น</b></a>&nbsp;&nbsp;&nbsp;<a>{{$sum}}</a>&nbsp;&nbsp;&nbsp;<b>บาท</b></div>
+
                         <div class="crad-body">
-                            <a style="float: right;" href="{{ url('/dealerorder/buy_all') }}" class="btn btn-danger btn-sm">
+                            <a style="float: right;" href="{{ url('/dealerorder/buy_all/' . $shop_id) }}" class="btn btn-danger btn-sm">
                                 <i class="fas fa-cart-arrow-down"></i> สั่งซื้อสินค้า
 
                             </a>
@@ -62,6 +78,8 @@
 
                         <div class="pagination-wrapper"> {!! $dealerorder->appends(['search' => Request::get('search')])->render() !!} </div>
                     </div>
+
+
 
                 </div>
             </div>

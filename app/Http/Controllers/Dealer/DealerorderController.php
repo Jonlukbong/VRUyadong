@@ -21,12 +21,13 @@ class DealerorderController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request,$id)
+    public function index(Request $request, $id)
     {
 
         $perPage = 25;
         $user_id = Auth::id();
         $cus_id = User::findOrFail($id);
+        $shop_id = $id;
 
         $dealerorder = Dealerorder::where('user_id', '=', $user_id)
             ->where('status', '=', 'show')
@@ -34,7 +35,7 @@ class DealerorderController extends Controller
             ->paginate($perPage);
 
 
-        return view('dealerorder.index', compact('dealerorder','cus_id'));
+        return view('dealerorder.index', compact('dealerorder', 'cus_id', 'shop_id'));
     }
 
     /**
@@ -46,7 +47,7 @@ class DealerorderController extends Controller
     {
         $allproduct = Product::get();
         $cus_id = User::findOrFail($id);
-        return view('dealerorder.create', compact('allproduct','cus_id'));
+        return view('dealerorder.create', compact('allproduct', 'cus_id'));
     }
 
     /**
@@ -56,7 +57,7 @@ class DealerorderController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
         $cus_id = User::findOrFail($id);
         $requestData = $request->all();
@@ -67,12 +68,17 @@ class DealerorderController extends Controller
         $requestData["price"] = $requestData["amount"] * $product->price;
         $requestData["status"] = "show";
         // $requestData["cus_id"] = $request;
-       
+
+        // echo "<pre>";
+        // print_r($requestData);
+        // echo "<pre>";
+        // echo $requestData["cus_id"] ;
+        // exit();
 
         //บันทึกลงตาราง
         Dealerorder::create($requestData);
 
-        return redirect()->to('dealerorder/'.$cus_id);
+        return redirect()->to('dealerorder/' . $requestData["cus_id"]);
     }
 
     /**
@@ -127,7 +133,7 @@ class DealerorderController extends Controller
 
 
 
-        return redirect()->to('dealerorder/'.$cus_id);
+        return redirect()->to('dealerorder/' . $cus_id);
     }
 
     /**
@@ -154,39 +160,48 @@ class DealerorderController extends Controller
 
         return redirect()->back();
     }
-    
-    public function buy_all()
+
+    public function buy_all($shop_id)
     {
         //มีการล็อคอินเข้าไอดี
         $user_id = Auth::user()->id;
 
-        $cus_buyall = Dealerorder::where('user_id', '=', $user_id)
+        $dealer_buyall = Dealerorder::where('user_id', '=', $user_id)
             ->where('status', '=', 'show')
             ->get();
 
-        //เอาarrayมาวนลูบ
-        foreach ($cus_buyall as $key1) {
+        // echo "<pre>";
+        // print_r($dealer_buyall);
+        // echo "<pre>";
+        // echo $shop_id;
+        // exit();
 
-            DB::table('dealerorder')
+        //เอาarrayมาวนลูบ
+        foreach ($dealer_buyall as $key1) {
+
+
+
+            DB::table('dealerorders')
                 ->where('id', '=', $key1->id)
                 ->update([
                     "status" => "order"
                 ]);
 
-            $requestData["nameproduct"] = $key1->nameproduct;
-            $requestData["amount"] = $key1->amount;
-            $requestData["price"] = $key1->price;
-            $requestData["picture"] = $key1->picture;
-            $requestData["idproduct"] = $key1->idproduct;
-            $requestData["user_id"] = $key1->user_id;
-            $requestData["status"] = "รอดำเนินการ";
+            // $requestData["nameproduct"] = $key1->nameproduct;
+            // $requestData["amount"] = $key1->amount;
+            // $requestData["price"] = $key1->price;
+            // $requestData["picture"] = $key1->picture;
+            // $requestData["idproduct"] = $key1->idproduct;
+            // $requestData["user_id"] = $key1->user_id;
+            // $requestData["status"] = "รอดำเนินการ";
 
             //บันทึกลงตาราง
-            Dealerorder::create($requestData);
+            // Dealerorder::create($requestData);
         }
 
 
 
-        return redirect('/dealerorder')->with('flash_message', 'Product drop!');
+        // return redirect('/dealerorder/' .$shop_id)->with('flash_message', 'Product drop!');
+        return redirect()->to('dealerorder/' . $shop_id);
     }
 }

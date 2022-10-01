@@ -80,3 +80,5 @@ Route::get('/dealerorder/{id}/edit', 'Dealer\DealerorderController@edit');
 Route::patch('/dealerorder/{id}/update', 'Dealer\DealerorderController@update');
 Route::get('/dealerorder/buy_all', 'Dealer\DealerorderController@buy_all');
 Route::get('/dealerorder/{id}/drop', 'Dealer\DealerorderController@drop');
+
+Route::get('/dealerorder/buy_all/{shop_id}', 'Dealer\DealerorderController@buy_all');

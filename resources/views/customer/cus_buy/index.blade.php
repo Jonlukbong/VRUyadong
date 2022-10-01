@@ -52,6 +52,7 @@
                             </tbody>
 
                         </table>
+                        
                         <div class="crad-body">
                             <a style="float: right;" href="{{ url('/cus_order/buy_all') }}" class="btn btn-danger btn-sm">
                                 <i class="fas fa-cart-arrow-down"></i> สั่งซื้อสินค้า
