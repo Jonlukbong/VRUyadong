@@ -72,7 +72,7 @@ class DealerorderController extends Controller
         //บันทึกลงตาราง
         Dealerorder::create($requestData);
 
-        return redirect()->back();
+        return redirect()->to('dealerorder/'.$cus_id);
     }
 
     /**
@@ -116,7 +116,7 @@ class DealerorderController extends Controller
     {
 
         $requestData = $request->all();
-        $cus_id = $requestData["cus_id"];
+        $cus_id = Auth::id();
 
         $dealerorder = Dealerorder::findOrFail($id);
         $allproduct = Product::where('id', $requestData["nameproduct"])->first();
@@ -127,7 +127,7 @@ class DealerorderController extends Controller
 
 
 
-        return redirect()->route('dealerorder', ['id' => 3]);
+        return redirect()->to('dealerorder/'.$cus_id);
     }
 
     /**
