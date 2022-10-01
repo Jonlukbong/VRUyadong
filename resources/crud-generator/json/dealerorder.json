@@ -1,0 +1,32 @@
+{
+    "fields": [
+        {
+            "name": "nameproduct",
+            "type": "string"
+        },
+        {
+            "name": "amount",
+            "type": "integer"
+        },
+        {
+            "name": "price",
+            "type": "integer"
+        },
+        {
+            "name": "picture",
+            "type": "file"
+        },
+        {
+            "name": "idproduct",
+            "type": "integer"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        }
+    ]
+}

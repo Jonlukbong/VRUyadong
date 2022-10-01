@@ -15,11 +15,17 @@
                         <a href="{{ url('/customer_branch') }}" title="Back"><button class="btn btn-info"><i aria-hidden="true"></i>ย้อนกลับ</button></a>
                     </div>
 
-
+                    <br>
                     <div class="table-responsive">
                         <form method="POST" action="{{ url('customer_branch/' . $branch->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
+
+                            <div class="form-group {{ $errors->has('picture') ? 'has-error' : ''}}">
+                                <label for="picture" class="control-label">{{ 'Picture' }}</label>
+                                <input class="form-control" name="picture" type="file" id="picture" value="{{ isset($branch->picture) ? $branch->picture : ''}}">
+                                {!! $errors->first('picture', '<p class="help-block">:message</p>') !!}
+                            </div>
 
 
                             <div class="form-group {{ $errors->has('namestore') ? 'has-error' : ''}}">
@@ -48,6 +54,12 @@
                                 <input class="form-control" name="phone" type="text" id="phone" value="{{ isset($branch->phone) ? $branch->phone : ''}}">
                                 {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                             </div>
+
+                            <div class="radio">
+                                <label><input name="status_store" type="radio" value="on" required @if (isset($branch->status_store)) @endif> เปิด </label>
+                                <label><input name="status_store" type="radio" value="off" required @if (isset($branch->status_store)) @endif> ปิด </label>
+                            </div>
+
 
                             <div class="container-fluid">
                                 <div class="row">

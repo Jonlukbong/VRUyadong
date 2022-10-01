@@ -71,3 +71,12 @@ Route::get('/dealer', 'Dealer\DealerController@index');
 Route::resource('branch', 'Dealer\BranchController');
 Route::resource('dealer_product', 'Dealer\Dealer_productController');
 Route::resource('dealer_contact', 'Dealer\Dealer_contactController');
+
+// Route::resource('dealerorder', 'Dealer\DealerorderController');
+Route::get('/dealerorder/{id}', 'Dealer\DealerorderController@index');
+Route::get('/dealerorder/create/{id}', 'Dealer\DealerorderController@create');
+Route::post('/dealerorder/{id}', 'Dealer\DealerorderController@store');
+Route::get('/dealerorder/{id}/edit', 'Dealer\DealerorderController@edit');
+Route::patch('/dealerorder/{id}/update', 'Dealer\DealerorderController@update');
+Route::get('/dealerorder/buy_all', 'Dealer\DealerorderController@buy_all');
+Route::get('/dealerorder/{id}/drop', 'Dealer\DealerorderController@drop');

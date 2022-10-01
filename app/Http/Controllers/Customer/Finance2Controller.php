@@ -36,7 +36,7 @@ class Finance2Controller extends Controller
         // $sumone2 = Finance2::where('user_id','=',$user_id)
         //         ->sum('sum2');
 
-        return view('finance2.index', compact('finance2'));
+        return view('finance2.index', compact('finance2','user_id'));
     }
 
     /**

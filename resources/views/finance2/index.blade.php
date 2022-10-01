@@ -56,7 +56,7 @@
 
                     <div><a><b>สรุปผลกำไรทั้งหมด</b></a>&nbsp;&nbsp;&nbsp;<a>{{ $sumone2 }}</a>&nbsp;&nbsp;&nbsp;<b>บาท</b></div>
 
-                    <a href="{{ url('/report/' . $item->id ) }}" title="Back"><button class="btn btn-dark btn-sm" style="float: right;"></i>🖨️พิมพ์รายงาน</button></a>
+                    <a href="{{ url('/report/' . $user_id ) }}" title="Back"><button class="btn btn-dark btn-sm" style="float: right;"></i>🖨️พิมพ์รายงาน</button></a>
 
                 </div>
             </div>

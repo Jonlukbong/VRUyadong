@@ -15,9 +15,9 @@ class Customer_branchController extends Controller
     public function index(Request $request)
     {
 
-            $id = Auth::id();
-            $branch = User::findOrFail($id);
-        
+        $id = Auth::id();
+        $branch = User::findOrFail($id);
+
         return view('customer.customer_branch', compact('branch'));
     }
 
@@ -28,14 +28,14 @@ class Customer_branchController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $requestData = $request->all();
-                if ($request->hasFile('picture')) {
+        if ($request->hasFile('picture')) {
             $requestData['picture'] = $request->file('picture')
                 ->store('uploads', 'public');
         }
 
-        customer_branch::create($requestData);
+        User::create($requestData);
 
         return redirect('customer_branch')->with('flash_message', 'Promotion added!');
     }
@@ -50,7 +50,11 @@ class Customer_branchController extends Controller
     public function update(Request $request, $id)
     {
         $requestData = $request->all();
-        
+        if ($request->hasFile('picture')) {
+            $requestData['picture'] = $request->file('picture')
+                ->store('uploads', 'public');
+        }
+
         $branch = User::findOrFail($id);
         $branch->update($requestData);
 

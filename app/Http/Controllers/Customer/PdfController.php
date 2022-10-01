@@ -18,10 +18,10 @@ class PdfController extends Controller
     public function report(Request $request ,$id)
     {
           //ค้นหาตาม pk
-          $users = Finance2::findOrFail($id);
+          $users = User::findOrFail($id);
 
 
-          $finance2 = Finance2::where('user_id','=',$users->id) 
+          $finance2 = Finance2::where('user_id','=',$users) 
           ->latest();
       
 
@@ -29,7 +29,7 @@ class PdfController extends Controller
          $compact = compact('users','finance2');
 
 
-         $pdf = PDF::loadView('finance2.report', $compact ,);
+         $pdf = PDF::loadView('finance2.report', $compact);
          return @$pdf->stream('report.pdf');
 
         // return view('pdf.medic_pdf'  , compact('users'));

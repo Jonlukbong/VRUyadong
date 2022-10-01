@@ -3,7 +3,14 @@
 @section('content')
 <div class="card">
     <div class="card-header py-3">
-        <h6 class="m-1 font-weight-bold text-primary">ข้อมูลร้าน</h6>
+        <div class="row">
+            @if($branch->status_store == 'on')
+            <h6 class="m-1 font-weight-bold text-success">เปิด</h6>
+            @else
+            <h6 class="m-1 font-weight-bold text-danger">ปิด</h6>
+            @endif
+            <h6 class="m-1 font-weight-bold text-primary">ข้อมูลร้าน</h6>
+        </div>
     </div>
     <br>
     <div class="container bootstrap snippets bootdey">
@@ -14,41 +21,45 @@
                     <div class="table-responsive">
                         <table class="table table-user-information">
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                                            ชื่อร้าน
-                                        </strong>
-                                    </td>
-                                    <td class="text-primary">
-                                        {{ $branch->namestore }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            <span class="glyphicon glyphicon-user  text-primary"></span>
-                                            ที่อยู่
-                                        </strong>
-                                    </td>
-                                    <td class="text-primary">
-                                        {{ $branch->address }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>
-                                            <span class="glyphicon glyphicon-cloud text-primary"></span>
-                                            เบอร์โทรศัพท์
-                                        </strong>
-                                    </td>
-                                    <td class="text-primary">
-                                        {{ $branch->phone }}
-                                    </td>
-                                </tr>
+                                <td>
+                                    <div class="center"><img src="{{ url('storage/'.$branch->picture )}}" alt="" width="300" height="200"></div><br>
+                                    <tr>
+                                        <br>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                                ชื่อร้าน
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ $branch->namestore }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-user  text-primary"></span>
+                                                ที่อยู่
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ $branch->address }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                                เบอร์โทรศัพท์
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ $branch->phone }}
+                                        </td>
+                                    </tr>
 
-                                </tr>
+                                    </tr>
+                                </td>
                             </tbody>
                         </table>
 
