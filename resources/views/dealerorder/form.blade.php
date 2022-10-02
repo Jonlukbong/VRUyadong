@@ -19,7 +19,7 @@
     {!! $errors->first('idproduct', '<p class="help-block">:message</p>') !!}
 </div>
 
-<div class=" form-group {{ $errors->has('cus_id') ? 'has-error' : ''}}">
+<div class="d-none form-group {{ $errors->has('cus_id') ? 'has-error' : ''}}">
     <input readonly class="form-control" name="cus_id" type="number" id="cus_id" value="{{ isset($cus_id->id) ? $cus_id->id : ''}}">
     {!! $errors->first('cus_id', '<p class="help-block">:message</p>') !!}
 </div>

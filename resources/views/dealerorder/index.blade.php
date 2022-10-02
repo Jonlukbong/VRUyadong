@@ -22,11 +22,11 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nameproduct</th>
-                                    <th>Amount</th>
-                                    <th>Price</th>
-                                    <th>Actions</th>
+                                    <th>ลำดับ</th>
+                                    <th>ชื่อสินค้า</th>
+                                    <th>จำนวน</th>
+                                    <th>ราคา</th>
+                                    <th>แก้ไข</th>
                                 </tr>
                             </thead>
                             <tbody>
