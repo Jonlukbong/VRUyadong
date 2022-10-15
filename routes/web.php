@@ -34,6 +34,8 @@ Route::resource('product', 'ProductController');
 Route::resource('promotion', 'PromotionController');
 Route::resource('admin_user', 'Adminyadong\Admin_userController');
 Route::resource('admin_customer', 'Adminyadong\Admin_customerController');
+Route::get('/admin_customer/finance/{id}', 'Adminyadong\Admin_customerController@finance');
+Route::get('/admin_customer/finance2/{id}', 'Adminyadong\Admin_customerController@finance2');
 
 Route::resource('adminorder', 'Adminyadong\AdminorderController');
 

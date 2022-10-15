@@ -70,7 +70,7 @@ class Admin_userController extends Controller
     {
         $users = User::findOrFail($id);
 
-        return view('adminyadong.admin_user.edit', compact('users'));
+        return view('adminyadong.admin_user_edit', compact('users'));
     }
 
    

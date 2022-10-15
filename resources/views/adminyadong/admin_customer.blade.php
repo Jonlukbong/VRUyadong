@@ -49,7 +49,8 @@
                 <th>ชื่อในเว็บ</th>
                 <th>อีเมล</th>
                 <th>สถานะ</th>
-                <th></th>
+                <th>แก้ไขข้อมูล</th>
+                <th>เช็คยอดขาย</th>
               </tr>
             </thead>
             @foreach($users as $item)
@@ -65,6 +66,7 @@
                   <button type="submit" class="btn btn-danger btn-sm" title="Delete Crud" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>ลบข้อมูล</button>
                 </form>
               </td>
+              <td><a href="{{ url('/admin_customer/finance/' . $item->id) }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>เช็คยอดขาย</button></a></td>
             </tbody>
             @endforeach
           </table>
