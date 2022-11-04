@@ -55,6 +55,8 @@ Route::get('/report/{id}', 'Customer\PdfController@report');
 Route::resource('finance', 'Customer\FinanceController');
 Route::resource('finance2', 'Customer\Finance2Controller');
 
+Route::resource('cus_dealerorder', 'Customer\Cus_dealerorderController');
+
 // Route::get('customer_branch', 'Customer\Customer_branchController@index');
 // Route::get('customer_branch/create', 'Customer\Customer_branchController@create');
 // Route::get('customer_branch', 'Customer\Customer_branchController@store');
@@ -65,6 +67,7 @@ Route::resource('finance2', 'Customer\Finance2Controller');
 Route::resource('customer_product', 'Customer\Customer_productController');
 
 Route::resource('customer_contact', 'Customer\Customer_contactController');
+
 
 
 //Route Dealer --------------------------------------------------------------------

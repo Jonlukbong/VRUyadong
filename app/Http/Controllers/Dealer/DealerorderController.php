@@ -170,16 +170,8 @@ class DealerorderController extends Controller
             ->where('status', '=', 'show')
             ->get();
 
-        // echo "<pre>";
-        // print_r($dealer_buyall);
-        // echo "<pre>";
-        // echo $shop_id;
-        // exit();
-
         //เอาarrayมาวนลูบ
         foreach ($dealer_buyall as $key1) {
-
-
 
             DB::table('dealerorders')
                 ->where('id', '=', $key1->id)
@@ -187,17 +179,17 @@ class DealerorderController extends Controller
                     "status" => "order"
                 ]);
 
-            // $requestData["nameproduct"] = $key1->nameproduct;
-            // $requestData["amount"] = $key1->amount;
-            // $requestData["price"] = $key1->price;
-            // $requestData["picture"] = $key1->picture;
-            // $requestData["idproduct"] = $key1->idproduct;
-            // $requestData["user_id"] = $key1->user_id;
-            // $requestData["status"] = "รอดำเนินการ";
+        //     $requestData["nameproduct"] = $key1->nameproduct;
+        //     $requestData["amount"] = $key1->amount;
+        //     $requestData["price"] = $key1->price;
+        //     $requestData["picture"] = $key1->picture;
+        //     $requestData["idproduct"] = $key1->idproduct;
+        //     $requestData["user_id"] = $key1->user_id;
+        //     $requestData["status"] = "รอดำเนินการ";
 
-            //บันทึกลงตาราง
-            // Dealerorder::create($requestData);
-        }
+        //     บันทึกลงตาราง
+        //     Dealerorder::create($requestData);
+        // }
 
 
 
