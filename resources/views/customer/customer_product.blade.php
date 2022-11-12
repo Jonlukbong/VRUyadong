@@ -4,7 +4,7 @@
 
 <!-- <div class="col-md-10"> -->
 <div class="card">
-    <div class="card-header">ข้อมูลสินค้า</div>
+    <div class="card-header"><h6 class="m-1 font-weight-bold text-primary">ข้อมูลสินค้า</h6></div>
     <div class="card-body">
 
         <!-- หัวข้อที่ 1 -->

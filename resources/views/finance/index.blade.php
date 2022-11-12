@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
                     <a href="{{ url('/finance/create') }}" class="btn btn-success btn-sm" title="Add New Finance">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูล
                     </a>
 
                     <!-- <form method="GET" action="{{ url('/finance') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">

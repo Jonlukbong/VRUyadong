@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <a href="{{ url('/finance2/create') }}" class="btn btn-success btn-sm" title="Add New Finance2">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูล
                     </a>
 
                     <br />

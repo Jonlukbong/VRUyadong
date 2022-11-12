@@ -8,11 +8,11 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header py-3">
-                    <h6 class="m-1 font-weight-bold text-primary">Promotion</h6>
+                    <h6 class="m-1 font-weight-bold text-primary">ข้อมูลโปรโมชั่น</h6>
                 </div>
                 <div class="card-body">
                     <a href="{{ url('/promotion/create') }}" class="btn btn-success btn-sm" title="Add New Promotion">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูล
                     </a>
 
                     <form method="GET" action="{{ url('/promotion') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -33,8 +33,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Promotion</th>
-                                    <th>Picture</th>
+                                    <th>โปรโมชั่น</th>
+                                    <th>รูปภาพ</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -43,16 +43,16 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->promotion }}</td>
-                                    <td> <img src="{{ url('storage/'.$item->picture )}}" alt="" width="300" height="200">
+                                    <td> <img src="{{ url('storage/'.$item->picture )}}" alt="" width="250" height="250">
                                     </td>
                                     <td>
                                         <a href="{{ url('/promotion/' . $item->id) }}" title="View Promotion"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                        <a href="{{ url('/promotion/' . $item->id . '/edit') }}" title="Edit Promotion"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        <a href="{{ url('/promotion/' . $item->id . '/edit') }}" title="Edit Promotion"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไข</button></a>
 
                                         <form method="POST" action="{{ url('/promotion' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Promotion" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Promotion" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบข้อมูล</button>
                                         </form>
                                     </td>
                                 </tr>

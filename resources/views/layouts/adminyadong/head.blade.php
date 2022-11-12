@@ -4,7 +4,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Vยาดอง</title>
+  <title>แอปพลิเคชัน เครื่องดื่มสุมนไพรบำรุงร่างกาย</title>
 
   <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css" />

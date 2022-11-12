@@ -5,9 +5,9 @@
     <div class="row">
         <!-- @include('admin.sidebar') -->
 
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">จัดการข้อมูลแอดมิน</div>
+                <div class="card-header"><h6 class="m-1 font-weight-bold text-primary">ข้อมูลติดต่อแอดมิน</h6></div>
                 <div class="card-body">
 
                     

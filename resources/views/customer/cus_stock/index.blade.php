@@ -8,11 +8,11 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header py-3">
-                    <h6 class="m-1 font-weight-bold text-primary">Product</h6>
+                    <h6 class="m-1 font-weight-bold text-primary">ข้อมูลสินค้า</h6>
                 </div>
                 <div class="card-body">
                     <a href="{{ url('/Cus_stock/create') }}" class="btn btn-success btn-sm" title="Add New Product">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า
                     </a>
 
                     <form method="GET" action="{{ url('/Cus_stock') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -48,12 +48,12 @@
                                     <td>{{ $item->price }}</td>
                                     <td>
                                         <a href="{{ url('/Cus_stock/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                        <a href="{{ url('/Cus_stock/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        <a href="{{ url('/Cus_stock/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไข</button></a>
 
                                         <form method="POST" action="{{ url('/Cus_stock' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบข้อมูล</button>
                                         </form>
                                     </td>
                                 </tr>

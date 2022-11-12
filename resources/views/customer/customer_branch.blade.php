@@ -13,10 +13,10 @@
         </div>
     </div>
     <br>
-    <div class="container bootstrap snippets bootdey">
-        <div class="panel-body inf-content">
+    <div class="container">
+        <div class="row">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-9">
 
                     <div class="table-responsive">
                         <table class="table table-user-information">

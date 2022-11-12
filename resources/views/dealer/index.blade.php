@@ -14,17 +14,18 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Promotion</th>
-                                <th>Picture</th>
+                                <th>รูปภาพ</th>
+                                <th>โปรโมชั่น</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($promotion as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td><img src="{{ url('storage/'.$item->picture )}}" alt="" width="250" height="250"></td>
                                 <td>{{ $item->promotion }}</td>
-                                <td> <img src="{{ url('storage/'.$item->picture )}}" alt="" width="300" height="200">
-                                </td>
+                                
                                 <td>
                                     <a href="{{ url('/promotion/' . $item->id) }}" title="View Promotion"></a>
                                     <a href="{{ url('/promotion/' . $item->id . '/edit') }}" title="Edit Promotion"></a>
