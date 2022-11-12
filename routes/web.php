@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //Route Admin --------------------------------------------------------------------
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -33,11 +33,16 @@ Route::get('/adminyadong', 'Adminyadong\AdminyadongController@index');
 Route::resource('product', 'ProductController');
 Route::resource('promotion', 'PromotionController');
 Route::resource('admin_user', 'Adminyadong\Admin_userController');
+Route::get('admin_user/{id}/show', 'Adminyadong\Admin_userController@show');
 Route::resource('admin_customer', 'Adminyadong\Admin_customerController');
 Route::get('/admin_customer/finance/{id}', 'Adminyadong\Admin_customerController@finance');
 Route::get('/admin_customer/finance2/{id}', 'Adminyadong\Admin_customerController@finance2');
 
 Route::resource('adminorder', 'Adminyadong\AdminorderController');
+
+Route::resource('admindata', 'AdmindataController');
+
+Route::get('changeStatus', 'Customer\Cus_dealerorderController@changeStatus');
 
 // Route::get('/login',)
 Route::resource('cusorder', 'CusorderController')->except(['show','edit']);

@@ -1,10 +1,10 @@
-@extends('layouts.customer.main')
+@extends('layouts.adminyadong.main')
 
 @section('content')
 <div class="card">
     <div class="card-header py-3">
         <div class="row">
-            @if($branch->status_store == 'on')
+            @if($users->status_store == 'on')
             <h6 class="m-1 font-weight-bold text-success">เปิด</h6>
             @else
             <h6 class="m-1 font-weight-bold text-danger">ปิด</h6>
@@ -22,7 +22,7 @@
                         <table class="table table-user-information">
                             <tbody>
                                 <td>
-                                    <div class="center"><img src="{{ url('storage/'.$branch->picture )}}" alt="" width="250" height="250"></div><br>
+                                    <div class="center"><img src="{{ url('storage/'.$users->picture )}}" alt="" width="250" height="250"></div><br>
                                     <tr>
                                         <br>
                                         <td>
@@ -32,7 +32,7 @@
                                             </strong>
                                         </td>
                                         <td class="text-primary">
-                                            {{ $branch->namestore }}
+                                            {{ $users->namestore }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -43,7 +43,7 @@
                                             </strong>
                                         </td>
                                         <td class="text-primary">
-                                            {{ $branch->address }}
+                                            {{ $users->address }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -54,7 +54,7 @@
                                             </strong>
                                         </td>
                                         <td class="text-primary">
-                                            {{ $branch->phone }}
+                                            {{ $users->phone }}
                                         </td>
                                     </tr>
 
@@ -64,9 +64,6 @@
                         </table>
 
                     </div>
-                    <div style="text-align: center">
-                        <a href="{{ url('customer_branch/' . $branch->id . '/edit') }}" title="Edit Crud"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</button></a>
-                    </div><br>
                 </div>
             </div>
         </div>

@@ -22,4 +22,13 @@ class AdminorderController extends Controller
 
         return view('adminyadong.adminorder.index', compact('cusorder'));
     }
+
+    public function changeStatus(Request $request)
+    {
+        $cusorder =Cusorder::findorFail($request->id);
+        $cusorder->status = $request->status;
+        $cusorder->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

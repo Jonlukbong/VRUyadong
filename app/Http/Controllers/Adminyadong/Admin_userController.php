@@ -62,7 +62,9 @@ class Admin_userController extends Controller
  
     public function show($id)
     {
-        //
+        $users = User::findOrFail($id);
+
+        return view('adminyadong.showcus', compact('users'));
     }
 
     

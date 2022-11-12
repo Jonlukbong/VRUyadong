@@ -59,7 +59,9 @@
               <td> {{ $item->name  }}</td>
               <td> {{ $item->email  }}</td>
               <td> {{ $item->role  }}</td>
-              <td><a href="{{ url('/admin_user/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</button></a>
+              <td>
+                <a href="{{ url('/admin_user/' . $item->id . '/show') }}" title="Show"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>ตรวจสอบหน้าร้าน</button></a>
+                <a href="{{ url('/admin_user/' . $item->id . '/edit') }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขข้อมูล</button></a>
                 <form method="POST" action="{{ url('/admin_customer' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                   {{ method_field('DELETE') }}
                   {{ csrf_field() }}

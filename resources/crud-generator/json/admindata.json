@@ -1,0 +1,36 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "surname",
+            "type": "string"
+        },
+        {
+            "name": "number",
+            "type": "integer"
+        },
+        {
+            "name": "picture",
+            "type": "file"
+        },
+        {
+            "name": "line",
+            "type": "string"
+        },
+        {
+            "name": "facebook",
+            "type": "string"
+        },
+        {
+            "name": "emall",
+            "type": "string"
+        },
+        {
+            "name": "address",
+            "type": "string"
+        }
+    ]
+}

@@ -39,6 +39,7 @@
                                     <th>จำนวน</th>
                                     <th>ราคา</th>
                                     <th>สถานะ</th>
+                                    <th>รับออเดอร์</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +51,10 @@
                                     <td>{{ $item->amount }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->status }}</td>
+                                        <!-- เปลี่ยนสถานะด้วย checkbox -->
+                                    <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $item->status ? 'checked' : '' }}>
+
+                                    </td>
                                     <!-- <td>
                                             <a href="{{ url('/cusorder/' . $item->id) }}" title="View Cusorder"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/cusorder/' . $item->id . '/edit') }}" title="Edit Cusorder"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -73,3 +78,26 @@
     </div>
 </div>
 @endsection
+
+<!-- Laravel Update Status Using Toggle Button -->
+<script>
+    $(document).ready(function() {
+        $('.toggle-class').change(function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+            $.ajax({
+
+                type: "GET",
+                dataType: "json",
+                url: '/changeStatus',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(data) {
+                    console.log(data.success)
+                }
+            });
+        })
+    });
+</script>

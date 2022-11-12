@@ -40,20 +40,21 @@
 </head>
 
 <body>
-    <h1 class="name" style="font-weight: bold;">hello</h1>
-    <p>สวัสดี</p>
+    <h1 class="name" style="font-weight: bold;">Monthly Profit Summary{{$users->id}}</h1>
     <table class="table name">
         <thead>
             <tr>
-                <th class="name">Mount</th>
-                <th class="name">ผลรวมกำไรทั้งหมด</th>
+                <th class="name">Mount555</th>
+                <th class="name">Total profit</th>
+                <th class="name">User_id</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($finance2 as $item)
+            @foreach($finance2 as $finance2)
             <tr>
-                <td class="name">{{ $item->created_at->toDateString() }}</td>
-                <td class="name">{{ $item->sum2 }}</td>
+                <td>{{ $finance2->created_at->toDateString() }}</td>
+                <td>{{ $finance2->sum2 }}</td>
+                <td>{{ $finance2->user_id }}</td>
             </tr>
 
             @endforeach

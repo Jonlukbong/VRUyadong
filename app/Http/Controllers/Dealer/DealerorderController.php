@@ -197,3 +197,4 @@ class DealerorderController extends Controller
         return redirect()->to('dealerorder/' . $shop_id);
     }
 }
+}
