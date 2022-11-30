@@ -43,28 +43,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($cusorder as $item)
+                                @foreach($cusorder as $cusorder)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->user_id }}</td>
-                                    <td>{{ $item->nameproduct }}</td>
-                                    <td>{{ $item->amount }}</td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $cusorder->user_id }}</td>
+                                    <td>{{ $cusorder->nameproduct }}</td>
+                                    <td>{{ $cusorder->amount }}</td>
+                                    <td>{{ $cusorder->price }}</td>
+
+                                    <form method="POST" action="{{ url('/cusorder/' . $cusorder->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                        {{ method_field('PATCH') }}
+                                        {{ csrf_field() }}
+
+                                        <td>
+                                            <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                <input class="form-control" name="status" type="text" id="status" value="{{ isset($cusorder->status) ? $cusorder->status : ''}}">
+                                                {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
+                                            </div>
+                                        </td>
                                         <!-- เปลี่ยนสถานะด้วย checkbox -->
-                                    <td><input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $item->status ? 'checked' : '' }}>
+                                        <td><input data-id="{{$cusorder->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
+                                        data-toggle="toggle" data-on="Active" data-off="InActive" {{ $cusorder->status ? 'checked' : '' }}>
 
-                                    </td>
-                                    <!-- <td>
-                                            <a href="{{ url('/cusorder/' . $item->id) }}" title="View Cusorder"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/cusorder/' . $item->id . '/edit') }}" title="Edit Cusorder"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        </td>
+                                    </form>
 
-                                            <form method="POST" action="{{ url('/cusorder' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Cusorder" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -1,10 +1,10 @@
 @extends('layouts.customer.main')
 
 @section('content')
-<div class="container">
+<div class="container" id="print">
     <div class="row">
 
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <a href="{{ url('/finance') }}" title="Back"><button class="btn btn-primary btn-sm"></i>รายวัน</button></a>
@@ -56,7 +56,13 @@
 
                     <div><a><b>สรุปผลกำไรทั้งหมด</b></a>&nbsp;&nbsp;&nbsp;<a>{{ $sumone2 }}</a>&nbsp;&nbsp;&nbsp;<b>บาท</b></div>
 
-                    <a href="{{ url('/report/' . $user_id ) }}" title="Back"><button class="btn btn-dark btn-sm" style="float: right;"></i>🖨️พิมพ์รายงาน</button></a>
+                    <!-- <a href="{{ url('/report/' . $user_id ) }}" title="Back"><button class="btn btn-dark btn-sm" style="float: right;"></i>🖨️พิมพ์รายงาน</button></a> -->
+
+                    
+
+                    <!-- <p>Click the button to print the current page.</p> -->
+
+                    <button  class="btn btn-dark btn-sm" style="float: right;" onclick="printDiv('print')">🖨️พิมพ์รายงาน</button>
 
                 </div>
             </div>
@@ -64,3 +70,16 @@
     </div>
 </div>
 @endsection
+
+<script>
+function printDiv(print) {
+     var printContents = document.getElementById(print).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>

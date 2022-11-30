@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <a href="{{ url('/finance') }}" title="Back"><button class="btn btn-primary btn-sm" ></i>รายวัน</button></a>

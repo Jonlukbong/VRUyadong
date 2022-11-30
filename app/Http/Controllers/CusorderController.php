@@ -103,6 +103,7 @@ class CusorderController extends Controller
         }
 
         $cusorder = Cusorder::findOrFail($id);
+        // if ($requestData['status'])
         $cusorder->update($requestData);
 
         return redirect('cusorder')->with('flash_message', 'Cusorder updated!');
