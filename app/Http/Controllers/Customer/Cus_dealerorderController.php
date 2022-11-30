@@ -22,4 +22,20 @@ class Cus_dealerorderController extends Controller
 
         return view('customer.cus_dealerorder.index', compact('dealerorder'));
     }
+
+    public function update(Request $request, $id)
+    {
+        
+        $requestData = $request->all();
+                if ($request->hasFile('picture')) {
+            $requestData['picture'] = $request->file('picture')
+                ->store('uploads', 'public');
+        }
+
+        $dealerorder = Dealerorder::findOrFail($id);
+        // if ($requestData['status'])
+        $dealerorder->update($requestData);
+
+        return redirect('cus_dealerorder')->with('flash_message', 'cus_dealerorder updated!');
+    }
 }

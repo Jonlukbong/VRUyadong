@@ -39,6 +39,7 @@
                                     <th>จำนวน</th>
                                     <th>ราคา</th>
                                     <th>สถานะ</th>
+                                    <th>รับออเดอร์</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,17 +50,15 @@
                                     <td>{{ $item->nameproduct }}</td>
                                     <td>{{ $item->amount }}</td>
                                     <td>{{ $item->price }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <!-- <td>
-                                            <a href="{{ url('/cusorder/' . $item->id) }}" title="View Cusorder"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/cusorder/' . $item->id . '/edit') }}" title="Edit Cusorder"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                    <form method="POST" action="{{ url('/cus_dealerorder/' . $item->id) }}" id="statusForm{{$item->id}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                        {{ method_field('PATCH') }}
+                                        {{ csrf_field() }}
 
-                                            <form method="POST" action="{{ url('/cusorder' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Cusorder" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td> -->
+                                        <td>{{ $item->status }}</td>
+                                        <!-- เปลี่ยนสถานะด้วย checkbox -->
+                                        <td><button class="btn btn-success btn-sm" value="{{isset($item['status']) && $item['status'] == 'รอดำเนินการ' ? 'รับออเดอร์' : 'รอดำเนินการ'}}" type="text" name="status" 
+                                        onchange="document.getElementById('statusForm{{$item->id}}').submit()">รับออเดอร์</button></td>
+                                    </form>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -176,7 +176,7 @@ class DealerorderController extends Controller
             DB::table('dealerorders')
                 ->where('id', '=', $key1->id)
                 ->update([
-                    "status" => "order"
+                    "status" => "รอดำเนินการ"
                 ]);
 
         //     $requestData["nameproduct"] = $key1->nameproduct;

@@ -31,4 +31,20 @@ class AdminorderController extends Controller
 
         return response()->json(['success'=>'Status change successfully.']);
     }
+
+    public function update(Request $request, $id)
+    {
+        
+        $requestData = $request->all();
+                if ($request->hasFile('picture')) {
+            $requestData['picture'] = $request->file('picture')
+                ->store('uploads', 'public');
+        }
+
+        $cusorder = Cusorder::findOrFail($id);
+        // if ($requestData['status'])
+        $cusorder->update($requestData);
+
+        return redirect('adminorder')->with('flash_message', 'Adminorder updated!');
+    }
 }

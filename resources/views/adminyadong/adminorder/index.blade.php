@@ -43,29 +43,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($cusorder as $cusorder)
+                                @foreach($cusorder as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $cusorder->user_id }}</td>
-                                    <td>{{ $cusorder->nameproduct }}</td>
-                                    <td>{{ $cusorder->amount }}</td>
-                                    <td>{{ $cusorder->price }}</td>
+                                    <td>{{ $item->user_id }}</td>
+                                    <td>{{ $item->nameproduct }}</td>
+                                    <td>{{ $item->amount }}</td>
+                                    <td>{{ $item->price }}</td>
 
-                                    <form method="POST" action="{{ url('/cusorder/' . $cusorder->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ url('/adminorder/' . $item->id) }}" id="statusForm{{$item->id}}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                                         {{ method_field('PATCH') }}
                                         {{ csrf_field() }}
 
-                                        <td>
-                                            <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                <input class="form-control" name="status" type="text" id="status" value="{{ isset($cusorder->status) ? $cusorder->status : ''}}">
-                                                {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
-                                            </div>
-                                        </td>
+                                        <td>{{ $item->status }}</td>
                                         <!-- เปลี่ยนสถานะด้วย checkbox -->
-                                        <td><input data-id="{{$cusorder->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-                                        data-toggle="toggle" data-on="Active" data-off="InActive" {{ $cusorder->status ? 'checked' : '' }}>
-
-                                        </td>
+                                        <td><button class="btn btn-success btn-sm" value="{{isset($item['status']) && $item['status'] == 'รอดำเนินการ' ? 'รับออเดอร์' : 'รอดำเนินการ'}}" type="text" name="status" 
+                                        onchange="document.getElementById('statusForm{{$item->id}}').submit()">รับออเดอร์</button></td>
                                     </form>
 
                                 </tr>
