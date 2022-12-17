@@ -2,42 +2,6 @@
 
 @section('content')
 
-@php
-$test = "ธีรศักดิ์";
-@endphp
-<!-- html2pdf CDN link -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
-    </head>
-    <body>
-        <button id="download-button">Download as PDF</button>
-        <div id="slip">
-            <div class="col-3 float-end text-center">
-            <h1 class="">Our Invoice</h1>
-            <p>asdads</p>
-        </div>
-        </div>
-
-        <script>
-            const button = document.getElementById('download-button');
-
-            function generatePDF() {
-                // Choose the element that your content will be rendered to.
-                const element = document.getElementById('slip');
-                var opt = {
-                    margin:       1,
-                    filename:     'สลิปเงินเดือนของ{{$test}}',
-                };
-                // New Promise-based usage:
-                html2pdf().from(element).set(opt).save();
-
-            }
-
-            button.addEventListener('click', generatePDF);
-        </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div class="container" id="print">
@@ -55,35 +19,30 @@ $test = "ธีรศักดิ์";
                     <a href="{{ url('/finance2/create') }}" class="btn btn-success btn-sm" title="Add New Finance2">
                         <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มข้อมูล
                     </a>
+                    <br />
+                    <br />
 
+                    <b>ชื่อสาขา {{Auth::user()->namestore}}</b><br>
                     <br />
-                    <br />
+
+                    
                     <div class="table-responsive">
 
                         <?php $sumone2 = 0.0; ?>
-                        <table class="table">
+                        <table class="table" style="border: 1px solid #e9edf0;">
                             <thead>
                                 <tr>
+                                    <th>ลำดับ</th>
                                     <th>เดือน</th>
                                     <th>ผลรวมกำไรทั้งหมด</th>
-                                    <th>แก้ไข</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($finance2 as $item)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->created_at->toDateString() }}</td>
                                     <td>{{ $item->sum2 }}</td>
-                                    <td>
-
-                                        <a href="{{ url('/finance2/' . $item->id . '/edit') }}" title="Edit Finance2"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไข</button></a>
-
-                                        <form method="POST" action="{{ url('/finance2' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Finance2" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบข้อมูล</button>
-                                        </form>
-                                    </td>
                                 </tr>
                                 <?php $sumone2 += $item->sum2; ?>
                                 @endforeach
@@ -101,11 +60,12 @@ $test = "ธีรศักดิ์";
 
                     <!-- <p>Click the button to print the current page.</p> -->
 
-                    <!-- <button class="btn btn-dark btn-sm" style="float: right;" onclick="printDiv('print')">🖨️พิมพ์รายงาน</button> -->
+                    <button class="btn btn-dark btn-sm" style="float: right;" onclick="printDiv('print')">🖨️พิมพ์รายงาน</button>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">
+
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">
                         🖨️พิมพ์รายงาน
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
@@ -180,7 +140,7 @@ $test = "ธีรศักดิ์";
     }
 </script>
 
-<script>
+<!-- <script>
     const button = document.getElementById('download-button');
 
     function generatePDF() {
@@ -191,4 +151,4 @@ $test = "ธีรศักดิ์";
     }
 
     button.addEventListener('click', generatePDF);
-</script>
+</script> -->

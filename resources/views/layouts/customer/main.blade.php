@@ -33,7 +33,7 @@
       </div>
       <!-- End of Main Content -->
  
-      @include('layouts.customer.footer')
+      
  
     </div>
     <!-- End of Content Wrapper -->
