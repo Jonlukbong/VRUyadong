@@ -17,8 +17,6 @@
                             <table class="table table-user-information">
                                 <tbody>
                                     @foreach($Admindata as $item)
-
-                                    <td>
                                         <div><img src="{{ url('storage/'.$item->picture )}}" alt="" width="200" height="200"></div><br>
                                         <tr>
                                             <br>
@@ -90,7 +88,6 @@
                                         
 
                                         </tr>
-                                    </td>
                                     @endforeach
                                 </tbody>
                             </table>

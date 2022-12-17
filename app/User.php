@@ -43,4 +43,8 @@ class User extends Authenticatable
     {
         return $this->type === self::ADMIN_TYPE;
     }
+
+    public function Finance2(){
+        return $this->hasMany('App\Models\Finance2', 'user_id'); 
+    }
 }

@@ -27,5 +27,7 @@ class Finance2 extends Model
      */
     protected $fillable = ['month', 'sum2', 'user_id'];
 
-    
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id' , 'id'); 
+    }
 }
